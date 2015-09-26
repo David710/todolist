@@ -1,1 +1,16 @@
-<h1>hello world</h1>
+<h1>to do lists:</h1>
+ 
+<table>
+  <tr>
+    <th>To do list title</th>
+    <th>description</th>
+  </tr>
+ 
+  <% @todo_lists.each do |todo_list| %>
+    <tr>
+      <td><%= todo_list.title %></td>
+      <td><%= todo_list.description %></td>
+    </tr>
+  <% end %>
+</table>
+
