@@ -1,18 +1,21 @@
 <h1>new to do list</h1>
-<%= Time.now.strftime("%m-%e-%y %H:%M") %>
 
 <%= form_for :todo_list, url: todo_lists_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+	<div class="row">
+		<div class="input-field col s6">
+   	 	<%= f.label :title %><br>
+    	<%= f.text_field :title, class: "validate"%>
+  	</div>
+	</div>
  
+	<div class="row">
+  	<div class="input-field col s6">
+   	 <%= f.label :description %><br>
+  		<%= f.text_field :description, class: "validate"%>
+ 	 	</div>
+	</div>
+	
   <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
+    <%= f.submit class: "waves-effect waves-light btn"%>
   </p>
 <% end %>
