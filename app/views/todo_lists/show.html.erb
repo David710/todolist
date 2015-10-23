@@ -1,11 +1,35 @@
-<p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
- 
-<p>
-  <strong>description:</strong>
-  <%= @todo_list.description %>
-</p>
 
-<%= link_to 'Todo lists', todo_lists_path %>
+		<p>
+		  <strong>Title:</strong>
+		  <%= @todo_list.title %>
+		</p>
+ 
+		<p>
+		  <strong>description:</strong>
+		  <%= @todo_list.description %>
+		</p>
+
+		<%= link_to 'Todo lists', todo_lists_path %>
+
+		<h4>todo items</h4>
+		<% @todo_list.todo_items.each do |todo_item| %>
+
+		  <p>
+		    <strong>todo item:</strong>
+		    <%= todo_item.description %>
+		  </p>
+		<% end %>
+
+
+		<h4>Add a todo item:</h4>
+		<%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+		<div class="row">
+		  <div class="input-field col s6">
+				    <%= f.label :description %><br>
+				    <%= f.text_field :description, class: "validate" %>
+			</div>
+		</div>
+		  
+		    <%= f.submit "new todo", class: "btn waves-light" %>
+
+		<% end %>
