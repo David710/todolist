@@ -14,10 +14,15 @@
 		<div class="divider"></div>
 		<div class="section">		
 			<% @todo_list.todo_items.each do |todo_item| %>
-		  <p>
+		  <div class="todos">
 		    <%= check_box_tag(todo_item.id) %>
 				<%= label_tag(todo_item.id, todo_item.description) %>
-		  </p>
+				<div class="delete_cross">
+				  <%= link_to 'X', todo_list_todo_item_path(@todo_list, todo_item),
+				              method: :delete,
+				              data: { confirm: 'Are you sure?' } %>
+				</div>
+		  </div>
 		  <% end %>
 		</div>	
 		<div class="divider"></div>
