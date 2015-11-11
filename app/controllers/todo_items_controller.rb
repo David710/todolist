@@ -23,6 +23,27 @@ class TodoItemsController < ApplicationController
     
     redirect_to todo_list_path(@todo_list)
   end
+  
+  def edit
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    
+    respond_to do |format|
+      format.html { redirect_to todo_list_path(@todo_list) }
+      format.js
+    end
+
+  end
+  
+  def update
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    @todo_item.reload
+ 
+    @todo_item.update(todo_item_params)
+    redirect_to todo_list_path(@todo_list)
+  end
+  
  
   private
     def todo_item_params

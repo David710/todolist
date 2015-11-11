@@ -31,6 +31,25 @@
 				              method: :delete,
 				              data: { confirm: 'Are you sure?' } %>
 				</div>
+				<div class="link_edit">
+					<%= link_to 'edit', edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true %>
+				</div>
+				
+				<div class="form_edit">
+					<%= form_for :todo_item, url: todo_list_todo_item_path(@todo_list, todo_item), method: :patch do |f| %>
+					<div class="row">
+					  <div class="input-field col s6">
+							    <%= f.label :description %><br>
+							    <%= f.text_field :description, class: "validate", id: todo_item.id %>
+						</div>
+					</div>
+	  
+		  
+				    <%= f.submit "edit todo", class: "btn waves-light" %>
+
+				<% end %>
+			</div>
+				
 		  </div>
 		  <% end %>
 		</div>	
