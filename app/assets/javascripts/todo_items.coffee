@@ -6,7 +6,7 @@ $( document ).on "page:change", ->
   $( "#todo_item_description" ).focus()
   console.log( "ready!" )
   $( ".link_edit" ).click (event) -> 
-    $form = $(this).next()
+    $form = $(this).parents(".todos").children(".form_edit")
     $form.fadeToggle()
     console.log( $form )
 #	  event.preventDefault()
