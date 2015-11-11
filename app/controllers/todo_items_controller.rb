@@ -11,6 +11,18 @@ class TodoItemsController < ApplicationController
     @todo_item.destroy
     redirect_to todo_list_path(@todo_list)
   end
+  
+  def completed
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
+    if @todo_item.done == true
+      @todo_item.update_attribute(:done, false)
+    else
+      @todo_item.update_attribute(:done, true)
+    end
+    
+    redirect_to todo_list_path(@todo_list)
+  end
  
   private
     def todo_item_params

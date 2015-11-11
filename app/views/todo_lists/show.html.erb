@@ -15,8 +15,17 @@
 		<div class="section">		
 			<% @todo_list.todo_items.each do |todo_item| %>
 		  <div class="todos">
-		    <%= check_box_tag(todo_item.id) %>
-				<%= label_tag(todo_item.id, todo_item.description) %>
+				<%= link_to completed_todo_list_todo_item_path(@todo_list, todo_item), :method => :post  do %>
+				   <% if todo_item.done == true %>
+				     <%= check_box_tag(todo_item.id, todo_item.done, checked = true) %>
+					   <%= label_tag(todo_item.id, todo_item.description) %>
+					<% else %>
+				     <%= check_box_tag(todo_item.id, todo_item.done, checked = false) %>
+					   <%= label_tag(todo_item.id, todo_item.description) %>
+					<% end %>					
+					
+				<% end %>
+		   
 				<div class="delete_cross">
 				  <%= link_to 'X', todo_list_todo_item_path(@todo_list, todo_item),
 				              method: :delete,
