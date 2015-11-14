@@ -9,14 +9,14 @@ $( document ).on "page:change", ->
     $form = $(this).parents(".todos").children(".form_edit")
     $form.fadeToggle()
     console.log( $form )
-  $( "label" ).mouseenter (event) -> 
-    $(this).parents(".todos").children(".wrap_menu").css("display", 'inline-block').fadeIn(500)
+
+  $( ".todos" ).mouseenter (event) -> 
+    $(this).children(".wrap_menu").css("display", "inline-block")
     console.log( "coucou" )
-  $( "label" ).mouseleave (event) -> 
-    $(this).parents(".todos").children(".wrap_menu").delay( 800 ).fadeOut(800).css("display", 'inline-block')
-		
-	
-	
+
+  $( ".todos" ).mouseleave (event) -> 
+    $(this).children(".wrap_menu").css("display", "none")
+    console.log( "yo" )
 
 #    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
 #	  event.preventDefault()
