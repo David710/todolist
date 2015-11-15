@@ -3,20 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $( document ).on "page:change", ->
+  #donne le focus à la barre de saisie des todos
   $( "#todo_item_description" ).focus()
-  console.log( "ready!" )
+
+  #fait appraitre la forme de saisie "edit" et lui donne le focus
   $( ".link_edit" ).click (event) -> 
     $form = $(this).parents(".todos").children(".form_edit")
     $form.fadeToggle()
-    console.log( $form )
+    $input = $form.children("form").children("div").children("div").children("input")
+    $input.focus()
 
+  #fait apparaitre les icones delete et edit qd on passe la sourie sur le todo
   $( ".todos" ).mouseenter (event) -> 
     $(this).children(".wrap_menu").css("display", "inline-block")
-    console.log( "coucou" )
 
   $( ".todos" ).mouseleave (event) -> 
     $(this).children(".wrap_menu").css("display", "none")
-    console.log( "yo" )
 
 #    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
 #	  event.preventDefault()
