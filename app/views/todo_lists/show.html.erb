@@ -17,10 +17,10 @@
 		  <div class="todos">
 				<%= link_to completed_todo_list_todo_item_path(@todo_list, todo_item), :method => :post  do %>
 				   <% if todo_item.done == true %>
-				     <%= check_box_tag(todo_item.id, todo_item.done, checked = true) %>
+				     <%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
 					   <%= label_tag(todo_item.id, todo_item.description) %>
 					<% else %>
-				     <%= check_box_tag(todo_item.id, todo_item.done, checked = false) %>
+				     <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
 					   <%= label_tag(todo_item.id, todo_item.description) %>
 					<% end %>					
 					
@@ -47,7 +47,7 @@
 					</div>
 	  
 		  
-				    <%= f.submit "edit todo", class: "btn waves-light" %>
+				    <%= f.submit "edit todo", class: "btn waves-light"%>
 
 				<% end %>
 			</div>
@@ -71,6 +71,7 @@
 		    <%= f.submit "new todo", class: "btn waves-light" %>
 
 		<% end %>
+
 		</div>
 		<%= link_to 'Todo lists', todo_lists_path %>
   </div>

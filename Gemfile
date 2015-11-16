@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'materialize-sass'
 
+gem 'jquery-ui-rails'
+
 # gem required by Heroku
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production

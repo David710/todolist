@@ -19,6 +19,10 @@ $( document ).on "page:change", ->
 
   $( ".todos" ).mouseleave (event) -> 
     $(this).children(".wrap_menu").css("display", "none")
+				
+  $( ".section" ).sortable();
+  $( ".section" ).disableSelection();
+
 
 #    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
 #	  event.preventDefault()
