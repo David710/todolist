@@ -20,8 +20,10 @@ $( document ).on "page:change", ->
   $( ".todos" ).mouseleave (event) -> 
     $(this).children(".wrap_menu").css("display", "none")
 				
-  $( ".section" ).sortable();
-  $( ".section" ).disableSelection();
+  $( ".section.group-todos" ).sortable({
+  axis: "y"
+  })
+  $( ".section.group-todos" ).disableSelection();
 
 
 #    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
