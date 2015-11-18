@@ -20,9 +20,11 @@ $( document ).on "page:change", ->
   $( ".todos" ).mouseleave (event) -> 
     $(this).children(".wrap_menu").css("display", "none")
 				
-  $( ".section.group-todos" ).sortable({
-  axis: "y"
-  })
+  $( ".section.group-todos" ).sortable
+    axis: "y"
+				update: ->
+						$.post($(this).data('update-url'), $(this).sortable('serialize'))
+  
   $( ".section.group-todos" ).disableSelection();
 
 

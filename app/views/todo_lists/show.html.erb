@@ -12,9 +12,10 @@
 			</p>
 	  </div>
 		<div class="divider"></div>
-		<div class="section group-todos">		
-			<% @todo_list.todo_items.each do |todo_item| %>
-		  <div class="todos">
+		<div class="section group-todos" data-update-url="<%= sort_todo_list_url(@todo_list) %>">		
+			<% @todo_list.todo_items.order("position").each do |todo_item| %>
+			<%= content_tag_for(:div, todo_item, class: "todos") do %>
+		  
 				<%= link_to completed_todo_list_todo_item_path(@todo_list, todo_item), :method => :post  do %>
 				   <% if todo_item.done == true %>
 				     <%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
@@ -52,7 +53,8 @@
 				<% end %>
 			</div>
 				
-		  </div>
+		  
+			<% end %>
 		  <% end %>
 		</div>	
 		<div class="divider"></div>

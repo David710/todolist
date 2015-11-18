@@ -24,6 +24,20 @@ class TodoListsController < ApplicationController
     redirect_to todo_lists_path
   end
   
+  def sort
+    @todo_list = TodoList.find(params[:id])
+    
+    params[:todo_item].each_with_index do |id, index|
+      @mytodo = @todo_list.todo_items.find(id)
+      @mytodo.position = index + 1
+      @mytodo.save
+    end
+#    render nothing: true
+
+   render :text => @mytodo.inspect
+
+  end
+  
   private
     def todo_list_params
       params.require(:todo_list).permit(:title, :description)

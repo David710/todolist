@@ -44,7 +44,6 @@ class TodoItemsController < ApplicationController
     redirect_to todo_list_path(@todo_list)
   end
   
- 
   private
     def todo_item_params
       params.require(:todo_item).permit(:description)
