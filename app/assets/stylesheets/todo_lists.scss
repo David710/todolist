@@ -1,3 +1,33 @@
 // Place all the styles related to the todoLists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #fce4ec ;
+}
+
+.total-content {
+	background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 860px;
+	border-radius: 10px;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+#title-todolist{
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.content-todos-total{
+  padding-left: 8%;
+}
+
+.todo-title{
+	text-decoration: underline;
+	text-decoration-color: #039be5;
+	font-weight: bold;
+	font-size: 20px;
+}
