@@ -1,12 +1,15 @@
 <div class="row total-content">
 	<h5 id="title-todolist">To-dos</h5>
+	<div id= "create-list">
+    <%= link_to 'new todo list', new_todo_list_path, class: "waves-effect waves-light btn pink lighten-2" %>
+	</div>
 	<div class= "content-todos-total">
   <% @todo_lists.each_with_index  do |todo_list, index| %>
         <div class="content-todos">
           <div class="bloc-list">
             <div class="bloc-title">
               <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
-              <p><%= todo_list.description%></p>
+              <p class="todo-desc"><%= todo_list.description%></p>
             </div>
             <div class="bloc-todos">
 							<div class="section group-todos" data-update-url="<%= sort_todo_list_url(todo_list) %>">		
@@ -66,4 +69,3 @@
   <% end %>
   </div>
 </div>
-<%= link_to 'new todo list', new_todo_list_path %>
