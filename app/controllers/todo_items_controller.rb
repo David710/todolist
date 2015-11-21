@@ -21,7 +21,8 @@ class TodoItemsController < ApplicationController
       @todo_item.update_attribute(:done, true)
     end
     
-    redirect_to todo_list_path(@todo_list)
+#    redirect_to todo_list_path(@todo_list)
+    redirect_to(:back)
   end
   
   def edit
