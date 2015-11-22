@@ -4,7 +4,7 @@
 
 $( document ).on "page:change", ->
   #donne le focus à la barre de saisie des todos
-  $( "#todo_item_description" ).focus()
+#  $( "#todo_item_description" ).focus()
 
   #fait appraitre la forme de saisie "edit" et lui donne le focus
   $( ".link_edit" ).click (event) -> 
