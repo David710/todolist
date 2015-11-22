@@ -9,7 +9,7 @@
           <div class="bloc-list">
             <div class="bloc-title">
               <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
-              <p class="todo-desc"><%= todo_list.description%></p>
+              <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
             </div>
             <div class="bloc-todos">
 							<div class="section group-todos" data-update-url="<%= sort_todo_list_url(todo_list) %>">		
@@ -47,7 +47,6 @@
 											</div>
 										</div>
 	  
-		  
 									    <%= f.submit "edit todo", class: "btn waves-light"%>
 
 									<% end %>

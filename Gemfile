@@ -27,6 +27,8 @@ gem 'materialize-sass'
 
 gem 'jquery-ui-rails'
 
+gem 'trix'
+
 # gem required by Heroku
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
