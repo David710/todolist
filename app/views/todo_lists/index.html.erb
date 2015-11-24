@@ -54,17 +54,20 @@
 				
 		  
 								<% end %>
+
 							  <% end %>
 							</div>	
             </div>
             <div class="bloc-cmd">
-              <%= link_to 'open', todo_list_path(todo_list) %>
 							<%= link_to 'delete', todo_list_path(todo_list),
 							              method: :delete,
 							              data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
         </div>
+				<div class = "add-todo-button">
+					    <%= link_to 'new todo',  new_todo_list_todo_item_path(todo_list), class: "waves-effect waves-light btn pink lighten-2" %>
+				</div>
   <% end %>
   </div>
 </div>
