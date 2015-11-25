@@ -58,6 +58,8 @@
 							  <% end %>
 							</div>	
             </div>
+						<!--affichage de la forme de creation des todos -->
+						<!-- <div id="task-form" style="display:none;"></div> -->
             <div class="bloc-cmd">
 							<%= link_to 'delete', todo_list_path(todo_list),
 							              method: :delete,
@@ -66,8 +68,10 @@
           </div>
         </div>
 				<div class = "add-todo-button">
-					    <%= link_to 'new todo',  new_todo_list_todo_item_path(todo_list), class: "waves-effect waves-light btn pink lighten-2" %>
+					    <%= link_to 'new todo',  new_todo_list_todo_item_path(todo_list), class: "waves-effect waves-light btn pink lighten-2", remote: true %>
 				</div>
   <% end %>
+
+	
   </div>
 </div>

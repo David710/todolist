@@ -26,6 +26,14 @@ $( document ).on "page:change", ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'))
   
   $( ".section.group-todos" ).disableSelection();
+		
+		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton
+		# create todo
+		$( ".add-todo-button > a" ).click ->
+    $( ".add-todo-button > a" ).show()			
+    $( '#task-form' ).remove()			
+    $(this).parents().append( "<div id='task-form' style='display:none;'></div>")			
+		  $(this).hide()
 
 
 #    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
