@@ -46,4 +46,32 @@ p.todo-desc {
 	font-size: 1.2rem;
 }
 
+// style des texts area
 
+input[type="text"].validate {
+	height: 20px;
+}
+
+//style de la forme de saisie des todos
+
+#task-form{
+	border: 1px solid rgba(252,228,236,1);
+	background-color: rgba(252,228,236,0.2);
+	padding: 20px 20px 20px 20px;
+	margin-left: -20px;
+	margin-right: 40px;
+	border-radius: 2px;
+}
+
+.form-todos{
+	padding-left: 0px;
+	padding-bottom: 25px;
+}
+
+.input-field.col.s6 {
+	padding-left: 0px;
+}
+
+.input-field label[for= "todo_item_description"] {
+	left: 0px;
+}
