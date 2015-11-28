@@ -11,7 +11,11 @@ class TodoItemsController < ApplicationController
   def create
     @todo_list = TodoList.find(params[:todo_list_id])
     @todo_item = @todo_list.todo_items.create(todo_item_params)
-    redirect_to todo_list_path(@todo_list)
+    
+    respond_to do |format|
+      format.html { redirect_to todo_list_path(@todo_list) }
+      format.js
+    end
   end
   
   def destroy
@@ -56,6 +60,6 @@ class TodoItemsController < ApplicationController
   
   private
     def todo_item_params
-      params.require(:todo_item).permit(:description)
+      params.require(:todo_item).permit(:description, :notes)
     end
 end

@@ -19,7 +19,8 @@ $( document ).on "page:change", ->
 
   $( ".todos" ).mouseleave (event) -> 
     $(this).children(".wrap_menu").css("display", "none")
-				
+
+#rend la section de todos sortable				
   $( ".section.group-todos" ).sortable
     axis: "y"
 				update: ->

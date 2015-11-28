@@ -54,8 +54,40 @@
 trix-editor{
 	min-height: 160px;
 	background-color: white;
+	border:0px;
 }
 
 #wrap-trix{
   background-color: white;
+	padding-bottom: 0px;
+	margin-bottom: 30px;
+	border:1px solid #e0e0e0;
+	border-radius: 5px;
 }
+
+span.button_group{
+	border:0px;
+}
+
+span.button_group>button{
+	border: 0px;
+} 
+
+trix-toolbar .button_group button:not(:first-child){
+	border: 0px;
+}
+
+trix-toolbar{
+	display: block;
+}
+
+.button_groups{
+	border-bottom: 1px solid #e0e0e0;
+	display: block;
+	padding-top:3px;
+}
+
+span.history_tools{
+	float:right;
+}
+

@@ -8,11 +8,12 @@
         <div class="content-todos">
           <div class="bloc-list">
             <div class="bloc-title">
-              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
+              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) 																				%></span>
               <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
             </div>
             <div class="bloc-todos">
-							<div class="section group-todos" data-update-url="<%= sort_todo_list_url(todo_list) %>">		
+							<div class="section group-todos" id="index_todo_list<%= todo_list.id %>" 													data-update-url="<%= sort_todo_list_url(todo_list) %>">		
+
 								<% todo_list.todo_items.order("position").each do |todo_item| %>
 								<%= content_tag_for(:div, todo_item, class: "todos") do %>
 		  
@@ -72,6 +73,6 @@
 				</div>
   <% end %>
 
-	
+	<div id="first-todo" style="display:none;"></div>
   </div>
 </div>
