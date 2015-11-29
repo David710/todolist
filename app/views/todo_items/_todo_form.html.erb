@@ -1,0 +1,19 @@
+<%= form_for([@todo_list, @todo_list.todo_items.build], remote: true) do |f| %>
+
+	<div class="row form-todos">
+	  <div class="input-field col s6">
+			    <input id="fake_input" class="filled-in" type="checkbox" value="true"     								name="fake_input">
+			    <%= f.label :description %><br>
+			    <%= f.text_field :description, class: "validate" %>
+		</div>
+	</div>
+
+	<%= f.label :notes %><br>
+	  <div class="row form-todos" id= "wrap-trix">
+	    <%= f.hidden_field :notes %>
+		  <trix-editor input= "todo_item_notes" ></trix-editor>
+	  </div> 	
+	
+	 <%= f.submit "new todo", class: "btn waves-light pink lighten-2" %>
+
+<% end %>
