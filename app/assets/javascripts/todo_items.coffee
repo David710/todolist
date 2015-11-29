@@ -25,6 +25,8 @@ $( document ).on "page:change", ->
     axis: "y"
 				update: ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'))
+      console.log( $(this).sortable('serialize') );
+    
   
   $( ".section.group-todos" ).disableSelection();
 		

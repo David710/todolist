@@ -21,6 +21,7 @@
 									   <% if todo_item.done == true %>
 									     <%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
 										   <%= label_tag(todo_item.id, todo_item.description) %>
+											 
 										<% else %>
 									     <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
 										   <%= label_tag(todo_item.id, todo_item.description) %>

@@ -29,6 +29,8 @@ gem 'jquery-ui-rails'
 
 gem 'trix'
 
+gem 'acts_as_list'
+
 # gem required by Heroku
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production

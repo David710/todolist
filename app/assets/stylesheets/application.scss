@@ -68,3 +68,21 @@ label {
     width: 30px;
     z-index: 0;
 }
+
+//style de la zone de saisie text area
+
+input[type="text"]:focus:not([readonly]),
+input[type="password"]:focus:not([readonly]),
+input[type="email"]:focus:not([readonly]),
+input[type="url"]:focus:not([readonly]),
+input[type="time"]:focus:not([readonly]),
+input[type="date"]:focus:not([readonly]),
+input[type="datetime-local"]:focus:not([readonly]),
+input[type="tel"]:focus:not([readonly]),
+input[type="number"]:focus:not([readonly]),
+input[type="search"]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+
