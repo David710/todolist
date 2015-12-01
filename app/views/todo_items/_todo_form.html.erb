@@ -8,12 +8,15 @@
 		</div>
 	</div>
 
-	<%= f.label :notes %><br>
-	  <div class="row form-todos" id= "wrap-trix">
-	    <%= f.hidden_field :notes %>
-		  <trix-editor input= "todo_item_notes" ></trix-editor>
-	  </div> 	
-	
-	 <%= f.submit "new todo", class: "btn waves-light pink lighten-2" %>
+	 <%= f.label :notes %><br>
+	   <div class="row form-todos" id= "wrap-trix">
+	     <%= f.hidden_field :notes %>
+	 	  <trix-editor input= "todo_item_notes" ></trix-editor>
+	   </div> 	
 
+	  <%= f.submit "new todo", class: "btn waves-light pink lighten-2" %>
+		<div id="form-cancel">
+		  <%= link_to "cancel", "#", class: "btn waves-light pink lighten-2", id: "cancel-button"%>
+		</div>
+  
 <% end %>

@@ -81,3 +81,9 @@ input[type="text"].validate {
 .content-todos{
 	margin-top: 30px;
 }
+
+// style de la form pour les nouveaux todos -> bouton cancel
+
+#form-cancel{
+	display: inline-block;
+}
