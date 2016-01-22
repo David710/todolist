@@ -20,7 +20,7 @@ $( document ).on "page:change", ->
   $( ".todos" ).mouseleave (event) ->
     $(this).children(".wrap_menu").css("display", "none")
 
-#rend la section de todos sortable
+  #rend la section de todos sortable
   $( ".section.group-todos" ).sortable
     axis: "y"
 				update: ->
@@ -41,9 +41,9 @@ $( document ).on "page:change", ->
   $( "div" ).click (event)->
     event.preventDefault
     test = $(this).find("#form-cancel > a").attr('id')
-				if event.target.id is test
-      $( '#task-form' ).remove()
-						$( ".add-todo-button > a" ).show()
+		  if event.target.id is test
+        $( '#task-form' ).remove()
+			  $( ".add-todo-button > a" ).show()
 
   #permet de cocher le check box d'un todoitem
   $( ".todos" ).click ->
