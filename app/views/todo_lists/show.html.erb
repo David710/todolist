@@ -6,16 +6,16 @@
 			<p>
 			  <h3><strong><%= @todo_list.title %></strong></h3>
 			</p>
- 
+
 			<p>
 			  <h5><em><%= @todo_list.description.html_safe %></em></h5>
 			</p>
 	  </div>
 		<div class="divider"></div>
-		<div class="section group-todos" data-update-url="<%= sort_todo_list_url(@todo_list) %>">		
+		<div class="section group-todos" data-update-url="<%= sort_todo_list_url(@todo_list) %>">
 			<% @todo_list.todo_items.order("position").each do |todo_item| %>
 			<%= content_tag_for(:div, todo_item, class: "todos") do %>
-		  
+
 				<%= link_to completed_todo_list_todo_item_path(@todo_list, todo_item), :method => :post  do %>
 				   <% if todo_item.done == true %>
 				     <%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
@@ -23,10 +23,10 @@
 					<% else %>
 				     <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
 					   <%= label_tag(todo_item.id, todo_item.description) %>
-					<% end %>					
-					
+					<% end %>
+
 				<% end %>
-		   
+
 				<div class= "wrap_menu">
 					<span class="delete_cross">
 				    <%= link_to 'X', todo_list_todo_item_path(@todo_list, todo_item),
@@ -37,7 +37,7 @@
 					  <%= link_to image_tag('file_edit.png'), edit_todo_list_todo_item_path(@todo_list,    todo_item), remote: true, class: "link_edit"  %>
 					</span>
 				</div>
-				
+
 				<div class="form_edit">
 					<%= form_for :todo_item, url: todo_list_todo_item_path(@todo_list, todo_item), method: :patch do |f|%>
 					<div class="row">
@@ -46,17 +46,17 @@
 							    <%= f.text_field :description, class: "validate", id: todo_item.id, value: todo_item.description %>
 						</div>
 					</div>
-	  
-		  
+
+
 				    <%= f.submit "edit todo", class: "btn waves-light pink lighten-2"%>
 
 				<% end %>
 			</div>
-				
-		  
+
+
 			<% end %>
 		  <% end %>
-		</div>	
+		</div>
 		<div class="divider"></div>
     <div class="section">
 
@@ -65,11 +65,11 @@
 			<div class="row">
 			  <div class="input-field col s6">
 					    <%= f.label :description %><br>
-					    <%= f.text_field :description, class: "validate" %>
+					    <%= f.text_field :description, class: "validate", autocomplete: "off" %>
 				</div>
 			</div>
-	  
-		  
+
+
 		    <%= f.submit "new todo", class: "btn waves-light pink lighten-2" %>
 
 		<% end %>
