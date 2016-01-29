@@ -32,20 +32,22 @@ $( document ).on "page:change", ->
 
 		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton
 		# create todo
-		$( ".add-todo-button > a" ).click ->
+  $( ".add-todo-button > a" ).click (event) ->
     $( ".add-todo-button > a" ).show()
     $( '#task-form' ).remove()
     $(this).parents().append( "<div id='task-form' style='display:none;'></div>")
-		  $(this).hide()
+    $(this).hide()
 
-  $( "div" ).click (event)->
+  $( "div" ).click (event) ->
     event.preventDefault
     test = $(this).find("#form-cancel > a").attr('id')
-		  if event.target.id is test
-        $( '#task-form' ).remove()
-			  $( ".add-todo-button > a" ).show()
+    if event.target.id is test
+      $( '#task-form' ).remove()
+      $( ".add-todo-button > a" ).show()
+    else
+      true
 
-  #permet de cocher le check box d'un todoitem
+  #permet de cocher la check box d'un todoitem
   $( ".todos" ).click ->
     $target = $(this).find("input[type=checkbox]")
     if $target.prop( "checked") is true
