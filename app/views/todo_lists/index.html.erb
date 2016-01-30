@@ -9,25 +9,28 @@
         <div class="content-todos">
           <div class="bloc-list">
             <div class="bloc-title">
-              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list)%></span>
+              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
               <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
             </div>
             <div class="bloc-todos">
 							<div class="section group-todos" id="index_todo_list<%= todo_list.id %>"data-update-url="<%= sort_todo_list_url(todo_list) %>">
 
 								<% todo_list.todo_items.order("position").each do |todo_item| %>
-								<%= content_tag_for(:div, todo_item, class: "todos") do %>
+									<%= content_tag_for(:div, todo_item, class: "todos") do %>
 
-									<%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
 									   <% if todo_item.done == true %>
-									     <%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
-										   <%= label_tag(todo_item.id, todo_item.description) %>
+										   <%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
+											 		<%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
+											   	<%= label_tag(todo_item.id, "", class: "filled-in") %>
+											 <% end %>
+											 <%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
 
 										<% else %>
-									     <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
-										   <%= label_tag(todo_item.id, todo_item.description) %>
+										<%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
+											 <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
+											 <%= label_tag(todo_item.id, "", class: "filled-in") %>
 										<% end %>
-
+										<%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
 									<% end %>
 
 									<div class= "wrap_menu">
@@ -37,7 +40,7 @@
 									                data: { confirm: 'Are you sure?' } %>
 										</span>
 					          <span class= "edit_tag">
-										  <%= link_to image_tag('file_edit.png'), edit_todo_list_todo_item_path(todo_list,    todo_item), remote: true, class: "link_edit"  %>
+										  <%= link_to image_tag('file_edit.png'), edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
 										</span>
 									</div>
 
@@ -52,9 +55,8 @@
 
 									    <%= f.submit "edit todo", class: "btn waves-light"%>
 
-									<% end %>
-								</div>
-
+										<% end %>
+								  </div>
 
 								<% end %>
 

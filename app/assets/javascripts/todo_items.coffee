@@ -38,24 +38,19 @@ $( document ).on "page:change", ->
     $(this).parents().append( "<div id='task-form' style='display:none;'></div>")
     $(this).hide()
 
-  $( "div" ).click (event) ->
-    event.preventDefault
+# permet d'afficher le bouton new todo quand on click sur cancel dans la form trix
+  $( "div.add-todo-button" ).click (event) ->
     test = $(this).find("#form-cancel > a").attr('id')
     if event.target.id is test
+      event.preventDefault()
       $( '#task-form' ).remove()
       $( ".add-todo-button > a" ).show()
-    else
-      true
 
   #permet de cocher la check box d'un todoitem
-  $( ".todos" ).click ->
-    $target = $(this).find("input[type=checkbox]")
-    if $target.prop( "checked") is true
-      $target.prop( "checked", false)
-    else
-      $target.prop( "checked", true )
-
-#    $(this).parents(".todos").children(".wrap_menu").fadeOut( 100 )
-#	  event.preventDefault()
-#    $( ".form_edit" ).fadeToggle()
-#    $( "#todo_item_description" ).focus()
+  $( ".todos" ).click (event)->
+    if $(event.target).hasClass( "filled-in" )
+      $target = $(this).find("input[type=checkbox]")
+      if $target.prop( "checked") is true
+        $target.prop( "checked", false)
+      else
+        $target.prop( "checked", true )
