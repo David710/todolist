@@ -33,7 +33,7 @@ $( document ).on "page:change", ->
       ui.item.removeClass('being-sorted')
 
 				update: ->
-						$.post($(this).data('update-url'), $(this).sortable('serialize'))
+						$.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
       console.log( $(this).sortable('serialize') );
 
 
