@@ -18,6 +18,7 @@
 
 .todos{
 	padding-bottom: 20px;
+	margin-right: 20px;
 }
 
 .form_edit {
@@ -91,3 +92,16 @@ span.history_tools{
 	float:right;
 }
 /*fin de style trix editor */
+
+/*style des handle bars à coté des todos dans la todolist*/
+
+span.handle {
+	cursor: move;
+	color: #e0e0e0;
+}
+
+/*style des todo pendent qu'il sont triés */
+.being-sorted {
+	background-color: rgba(252,228,236,0.5);
+	border-radius: 9px;
+}

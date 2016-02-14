@@ -23,6 +23,15 @@ $( document ).on "page:change", ->
   #rend la section de todos sortable
   $( ".section.group-todos" ).sortable
     axis: "y"
+    handle: '.handle'
+    start: ( event, ui ) ->
+      #console.log $(this).find(".todo_item").first()
+      #$(this).find(".todo_item").first().css("background-color", "red")
+      console.log ui.helper
+      ui.helper.addClass('being-sorted')
+    stop: ( event, ui ) ->
+      ui.item.removeClass('being-sorted')
+
 				update: ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'))
       console.log( $(this).sortable('serialize') );
