@@ -58,7 +58,7 @@ input[type="text"].validate {
 
 //style de la forme de saisie des todos
 
-#task-form{
+#task-form, #task-form-edit{
 	border: 1px solid rgba(252,228,236,1);
 	background-color: rgba(252,228,236,0.2);
 	padding: 20px 20px 20px 20px;
@@ -88,6 +88,10 @@ input[type="text"].validate {
 
 // style de la form pour les nouveaux todos -> bouton cancel
 
-#form-cancel{
+#form-cancel, #form-cancel-edit{
 	display: inline-block;
+}
+
+#task-form-edit {
+  margin-bottom: 20px;
 }

@@ -1,0 +1,22 @@
+<%= form_for([@todo_list, @todo_item], method: :patch, remote: true) do |f| %>
+
+	<div class="row form-todos">
+	  <div class="input-field col s6">
+			    <!-- <input id="fake_input2" class="filled-in" type="checkbox" value="true" name="fake_input2"> -->
+			    <%= f.label :description %><br>
+			    <%= f.text_field :description, id: "todo_item_edit" , class: "validate", autocomplete: "off" %>
+		</div>
+	</div>
+
+	 <%= f.label :notes %><br>
+	   <div class="row form-todos" id= "wrap-trix2">
+	     <%= f.hidden_field :notes, id: "todo_notes_edit" %>
+	 	  <trix-editor input= "todo_item_notes" id="trix-edit"></trix-editor>
+	   </div>
+
+	  <%= f.submit "edit todo", class: "btn waves-light pink lighten-2" %>
+		<div id="form-cancel2">
+		  <%= link_to "cancel", "#", class: "btn waves-light pink lighten-2", id: "cancel-button2"%>
+		</div>
+
+<% end %>

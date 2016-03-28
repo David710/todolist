@@ -42,10 +42,10 @@
 									                data: { confirm: 'Are you sure?' } %>
 										</span>
 					          <span class= "edit_tag">
-										  <%= link_to image_tag('file_edit.png'), edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
+										  <%= link_to "edit", edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
 										</span>
 									</div>
-
+<!--
 									<div class="form_edit">
 										<%= form_for :todo_item, url: todo_list_todo_item_path(todo_list, todo_item), method: :patch do |f|%>
 										<div class="row">
@@ -59,7 +59,7 @@
 
 										<% end %>
 								  </div>
-
+-->
 								<% end %>
 
 							  <% end %>

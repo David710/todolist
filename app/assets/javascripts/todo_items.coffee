@@ -7,11 +7,11 @@ $( document ).on "page:change", ->
 #  $( "#todo_item_description" ).focus()
 
   #fait appraitre la forme de saisie "edit" et lui donne le focus
-  $( ".link_edit" ).click (event) ->
-    $form = $(this).parents(".todos").children(".form_edit")
-    $form.fadeToggle()
-    $input = $form.children("form").children("div").children("div").children("input")
-    $input.focus()
+  #$( ".link_edit" ).click (event) ->
+  #  $form = $(this).parents(".todos").children(".form_edit")
+  #  $form.fadeToggle()
+  #  $input = $form.children("form").children("div").children("div").children("input")
+  #  $input.focus()
 
   #fait apparaitre les icones delete et edit qd on passe la sourie sur le todo
   $( ".todos" ).mouseenter (event) ->
@@ -25,19 +25,15 @@ $( document ).on "page:change", ->
     axis: "y"
     handle: '.handle'
     start: ( event, ui ) ->
-      #console.log $(this).find(".todo_item").first()
-      #$(this).find(".todo_item").first().css("background-color", "red")
-      console.log ui.helper
       ui.helper.addClass('being-sorted')
     stop: ( event, ui ) ->
       ui.item.removeClass('being-sorted')
 
 				update: ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
-      console.log( $(this).sortable('serialize') );
 
 
-  $( ".section.group-todos" ).disableSelection();
+  #$( ".section.group-todos" ).disableSelection();
 
 		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton
 		# create todo
@@ -47,10 +43,20 @@ $( document ).on "page:change", ->
     $(this).parents().append( "<div id='task-form' style='display:none;'></div>")
     $(this).hide()
 
+		#fait apparaitre la div id="task-form-edit" sous le todo pour lequel on a appuyé sur le bouton
+		# edit
+  $( ".edit_tag > a" ).click (event) ->
+    $( ".edit_tag > a" ).show()
+    $( '#task-form-edit' ).remove()
+    $( "<div id='task-form-edit' style='display:none;'></div>" ).insertAfter( $(this).parents("div.todo_item") )
+    $(this).hide()
+
+
+
 # permet d'afficher le bouton new todo quand on click sur cancel dans la form trix
   $( "div.add-todo-button" ).click (event) ->
-    test = $(this).find("#form-cancel > a").attr('id')
-    if event.target.id is test
+    $target = $(this).find("#form-cancel > a").attr('id')
+    if event.target.id is $target
       event.preventDefault()
       $( '#task-form' ).remove()
       $( ".add-todo-button > a" ).show()
@@ -63,3 +69,11 @@ $( document ).on "page:change", ->
         $target.prop( "checked", false)
       else
         $target.prop( "checked", true )
+
+  #cache la forme de saisie edit quand on click sur cancel
+  $( "div.group-todos" ).click ( event ) ->
+    $target = $( this ).find( "#task-form-edit #cancel-button-edit" ).attr( 'id')
+    if event.target.id is $target
+      event.preventDefault()
+      $( '#task-form-edit' ).remove()
+      $( ".edit_tag > a" ).show()
