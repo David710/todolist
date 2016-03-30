@@ -1,26 +1,33 @@
 class TodoItemsController < ApplicationController
-  
-  before_filter :cors_preflight_check
-  after_filter :cors_set_access_control_headers
 
-  # For all responses in this controller, return the CORS access control headers.
-  def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    headers['Access-Control-Max-Age'] = "1728000"
+  before_action :authenticate_user
+  after_filter :cors_set_access_control_headers
+  skip_before_filter :authenticate_user, :only => [:route_options]
+
+  def route_options
+    cors_preflight_check
   end
 
-  # If this is a preflight OPTIONS request, then short-circuit the
-  # request, return only the necessary headers and return an empty
-  # text/plain.
+  def authenticate_user
+    #Do some cool stuff with tokens to identify the user
+  end
+
+  def cors_set_access_control_headers
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token, Auth-Token, Email'
+    response.headers['Access-Control-Max-Age'] = "1728000"
+  end
 
   def cors_preflight_check
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
-    headers['Access-Control-Max-Age'] = '1728000'
+    if request.method == 'OPTIONS'
+      request.headers['Access-Control-Allow-Origin'] = '*'
+      request.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+      request.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token, Auth-Token, Email'
+      request.headers['Access-Control-Max-Age'] = '1728000'
+      render :text => '', :content_type => 'text/plain'
+    end
   end
-
 
   def new
     @todo_list = TodoList.find(params[:todo_list_id])

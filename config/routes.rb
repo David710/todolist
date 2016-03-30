@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'todo_lists#index'
 
-  match 'todo_items', to: 'todo_items#new', via: [:options]
-
+  controller 'todo_items' do
+    match '*unmatched_route', :to => 'todo_items#route_options', via: [:options]
+  end
 
   resources :todo_lists do
     member do
