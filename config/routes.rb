@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'todo_lists#index'
 
-  controller 'todo_items' do
-    match '*unmatched_route', :to => 'todo_items#route_options', via: [:options]
-  end
-
   resources :todo_lists do
     member do
       post 'sort'

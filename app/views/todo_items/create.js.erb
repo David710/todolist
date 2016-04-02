@@ -1,2 +1,17 @@
 $('#index_todo_list<%= @todo_list.id %>').append("<%= j (render 'first_todo') %>");
 $('#todo_item_description').val("");
+
+$( ".todos" ).mouseenter ( function( event ) {
+  $( this ).children( ".wrap_menu" ).css( "display", "inline-block" );
+});
+
+$( ".todos" ).mouseleave ( function( event ) {
+  $(this).children(".wrap_menu").css("display", "none");
+});
+
+$( ".edit_tag > a" ).click ( function ( event ) {
+  $( ".edit_tag > a" ).show()
+  $( '#task-form-edit' ).remove()
+  $( "<div id='task-form-edit' style='display:none;'></div>" ).insertAfter( $(this).parents("div.todo_item") )
+  $(this).hide()
+});

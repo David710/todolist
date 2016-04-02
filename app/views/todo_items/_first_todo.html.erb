@@ -1,38 +1,32 @@
-<%= content_tag_for(:div, @todo_item, class: "todos ui-sortable-handle") do %>
-		<%= link_to completed_todo_list_todo_item_path(@todo_list, @todo_item), :method => :post  do %>
-			   <% if @todo_item.done == true %>
-			     <%= check_box_tag(@todo_item.id, @todo_item.done, checked = true, class: "filled-in") %>
-				   <%= label_tag(@todo_item.id, @todo_item.description) %>
-				<% else %>
-			     <%= check_box_tag(@todo_item.id, @todo_item.done, checked = false, class: "filled-in") 							%>
-				   <%= label_tag(@todo_item.id, @todo_item.description) %>
-				<% end %>
+<%= content_tag_for(:div, @todo_item, class: "todos") do %>
 
+		 <% if @todo_item.done == true %>
+			 <span class="handle"><i class="material-icons">reorder</i></span>
+			 <%= link_to completed_todo_list_todo_item_path(@todo_list, @todo_item), method: :post, remote: true  do %>
+					<%= check_box_tag(@todo_item.id, @todo_item.done, checked = true, class: "filled-in") %>
+					<%= label_tag(@todo_item.id, "", class: "filled-in") %>
+			 <% end %>
+			 <%= label_tag(@todo_item.id.to_s + "-desc", @todo_item.description, class: "label-desc") %>
+
+		<% else %>
+			<span class="handle"><i class="material-icons">reorder</i></span>
+			<%= link_to completed_todo_list_todo_item_path(@todo_list, @todo_item), method: :post, remote: true  do %>
+				 <%= check_box_tag(@todo_item.id, @todo_item.done, checked = false, class: "filled-in") %>
+				 <%= label_tag(@todo_item.id, "", class: "filled-in") %>
+			<% end %>
+			<%= label_tag(@todo_item.id.to_s + "-desc", @todo_item.description, class: "label-desc") %>
 		<% end %>
 
 
 		<div class= "wrap_menu">
 			<span class="delete_cross">
-		    <%= link_to 'X', todo_list_todo_item_path(@todo_list, @todo_item),
-		                method: :delete,
-		                data: { confirm: 'Are you sure?' } %>
+				<%= link_to 'X', todo_list_todo_item_path(@todo_list, @todo_item),
+										method: :delete,
+										data: { confirm: 'Are you sure?' } %>
 			</span>
-	    <span class= "edit_tag">
-			  <%= link_to image_tag('file_edit.png'), edit_todo_list_todo_item_path(@todo_list, @todo_item), remote: true, class: "link_edit"  %>
+			<span class= "edit_tag">
+				<%= link_to "edit", edit_todo_list_todo_item_path(@todo_list, @todo_item), remote: true, class: "link_edit"  %>
 			</span>
 		</div>
 
-		<div class="form_edit">
-				<%= form_for :todo_item, url: todo_list_todo_item_path(@todo_list, @todo_item), method: :patch do |f|%>
-				<div class="row">
-				  <div class="input-field col s6">
-						    <%= f.label :description %><br>
-						    <%= f.text_field :description, class: "validate", id: @todo_item.id, value: @todo_item.description %>
-					</div>
-				</div>
-
-			    <%= f.submit "edit todo", class: "btn waves-light"%>
-
-				<% end %>
-		</div>
 <% end %>

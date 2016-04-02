@@ -3,15 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $( document ).on "page:change", ->
-  #donne le focus à la barre de saisie des todos
-#  $( "#todo_item_description" ).focus()
-
-  #fait appraitre la forme de saisie "edit" et lui donne le focus
-  #$( ".link_edit" ).click (event) ->
-  #  $form = $(this).parents(".todos").children(".form_edit")
-  #  $form.fadeToggle()
-  #  $input = $form.children("form").children("div").children("div").children("input")
-  #  $input.focus()
 
   #fait apparaitre les icones delete et edit qd on passe la sourie sur le todo
   $( ".todos" ).mouseenter (event) ->
@@ -32,8 +23,6 @@ $( document ).on "page:change", ->
 				update: ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
 
-
-  #$( ".section.group-todos" ).disableSelection();
 
 		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton
 		# create todo
