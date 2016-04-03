@@ -1,4 +1,4 @@
-$('#index_todo_list<%= @todo_list.id %>').append("<%= j (render 'first_todo') %>");
+$('#index_todo_list<%= @todo_list.id %>').append( "<%= j (render 'first_todo') %>" );
 $('#todo_item_description').val("");
 
 $( ".todos" ).mouseenter ( function( event ) {
@@ -10,8 +10,20 @@ $( ".todos" ).mouseleave ( function( event ) {
 });
 
 $( ".edit_tag > a" ).click ( function ( event ) {
-  $( ".edit_tag > a" ).show()
-  $( '#task-form-edit' ).remove()
-  $( "<div id='task-form-edit' style='display:none;'></div>" ).insertAfter( $(this).parents("div.todo_item") )
-  $(this).hide()
+  $( ".edit_tag > a" ).show();
+  $( '#task-form-edit' ).remove();
+  $( "<div id='task-form-edit' style='display:none;'></div>" ).insertAfter( $(this).parents("div.todo_item") );
+  $(this).hide();
 });
+
+ $( ".todos" ).click ( function ( event ) {
+     if ( $( event.target ).hasClass( "filled-in" ) ) {
+       $target = $( this ).find( "input[type=checkbox]" );
+       if ( $target.prop( "checked") == true ) {
+         $target.prop( "checked", false);
+       }
+       else {
+         $target.prop( "checked", true );
+       };
+     };
+ });

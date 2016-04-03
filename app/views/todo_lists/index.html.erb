@@ -45,28 +45,14 @@
 										  <%= link_to "edit", edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
 										</span>
 									</div>
-<!--
-									<div class="form_edit">
-										<%= form_for :todo_item, url: todo_list_todo_item_path(todo_list, todo_item), method: :patch do |f|%>
-										<div class="row">
-										  <div class="input-field col s6">
-												    <%= f.label :description %><br>
-												    <%= f.text_field :description, class: "validate", id: todo_item.id, value: todo_item.description %>
-											</div>
-										</div>
 
-									    <%= f.submit "edit todo", class: "btn waves-light"%>
-
-										<% end %>
-								  </div>
--->
 								<% end %>
 
 							  <% end %>
 							</div>
             </div>
 						<!--affichage de la forme de creation des todos -->
-						<!-- <div id="task-form" style="display:none;"></div> -->
+
             <div class="bloc-cmd">
 							<%= link_to 'delete', todo_list_path(todo_list),
 							              method: :delete,
