@@ -2,3 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$( document ).on "page:change", ->
+  #rend la section list-todolist sortable
+  $( ".content-todos-total" ).sortable
+    axis: 'y'
+    update: ->
+      alert 'updated'

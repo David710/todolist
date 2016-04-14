@@ -5,65 +5,67 @@
     <%= link_to 'new todo list', new_todo_list_path, class: "waves-effect waves-light btn pink lighten-2" %>
 	</div>
 	<div class= "content-todos-total">
-  <% @todo_lists.each_with_index  do |todo_list, index| %>
-        <div class="content-todos">
-          <div class="bloc-list">
-            <div class="bloc-title">
-              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
-              <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
-            </div>
-            <div class="bloc-todos">
-							<div class="section group-todos" id="index_todo_list<%= todo_list.id %>"data-update-url="<%= sort_todo_list_url(todo_list) %>">
+  	<% @todo_lists.each_with_index  do |todo_list, index| %>
+					<%= content_tag_for(:div, todo_list) do %>
+        		<div class="content-todos">
+	          	<div class="bloc-list">
+		            <div class="bloc-title">
+		              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
+		              <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
+		            </div>
+		            <div class="bloc-todos">
+									<div class="section group-todos" id="index_todo_list<%= todo_list.id %>"data-update-url="<%= sort_todo_list_url(todo_list) %>">
 
-								<% todo_list.todo_items.order("position").each do |todo_item| %>
-									<%= content_tag_for(:div, todo_item, class: "todos") do %>
+										<% todo_list.todo_items.order("position").each do |todo_item| %>
+											<%= content_tag_for(:div, todo_item, class: "todos") do %>
 
-									   <% if todo_item.done == true %>
-										 	 <span class="handle"><i class="material-icons">reorder</i></span>
-										   <%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
-											 		<%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
-											   	<%= label_tag(todo_item.id, "", class: "filled-in") %>
-											 <% end %>
-											 <%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
+											   <% if todo_item.done == true %>
+												 	 <span class="handle"><i class="material-icons">reorder</i></span>
+												   <%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
+													 		<%= check_box_tag(todo_item.id, todo_item.done, checked = true, class: "filled-in") %>
+													   	<%= label_tag(todo_item.id, "", class: "filled-in") %>
+													 <% end %>
+													 <%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
 
-										<% else %>
-											<span class="handle"><i class="material-icons">reorder</i></span>
-											<%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
-												 <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
-												 <%= label_tag(todo_item.id, "", class: "filled-in") %>
+												<% else %>
+													<span class="handle"><i class="material-icons">reorder</i></span>
+													<%= link_to completed_todo_list_todo_item_path(todo_list, todo_item), method: :post, remote: true  do %>
+														 <%= check_box_tag(todo_item.id, todo_item.done, checked = false, class: "filled-in") %>
+														 <%= label_tag(todo_item.id, "", class: "filled-in") %>
+													<% end %>
+													<%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
+												<% end %>
+
+											<div class= "wrap_menu">
+												<span class="delete_cross">
+											    <%= link_to 'X', todo_list_todo_item_path(todo_list, todo_item),
+											                method: :delete,
+											                data: { confirm: 'Are you sure?' } %>
+												</span>
+							          <span class= "edit_tag">
+												  <%= link_to "edit", edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
+												</span>
+											</div>
+
 											<% end %>
-											<%= label_tag(todo_item.id.to_s + "-desc", todo_item.description, class: "label-desc") %>
-										<% end %>
 
-									<div class= "wrap_menu">
-										<span class="delete_cross">
-									    <%= link_to 'X', todo_list_todo_item_path(todo_list, todo_item),
-									                method: :delete,
-									                data: { confirm: 'Are you sure?' } %>
-										</span>
-					          <span class= "edit_tag">
-										  <%= link_to "edit", edit_todo_list_todo_item_path(todo_list, todo_item), remote: true, class: "link_edit"  %>
-										</span>
+									  <% end %>
 									</div>
+		            </div>
+							<!--affichage de la forme de creation des todos -->
 
-								<% end %>
-
-							  <% end %>
+		            <div class="bloc-cmd">
+									<%= link_to 'delete', todo_list_path(todo_list),
+									              method: :delete,
+									              data: { confirm: 'Are you sure?' } %>
+		            </div>
+	          </div>
+        	</div>
+							<div class = "add-todo-button">
+					    	<%= link_to 'new todo',  new_todo_list_todo_item_path(todo_list), class: "waves-effect waves-light btn pink lighten-2", remote: true %>
 							</div>
-            </div>
-						<!--affichage de la forme de creation des todos -->
-
-            <div class="bloc-cmd">
-							<%= link_to 'delete', todo_list_path(todo_list),
-							              method: :delete,
-							              data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div>
-        </div>
-				<div class = "add-todo-button">
-					    <%= link_to 'new todo',  new_todo_list_todo_item_path(todo_list), class: "waves-effect waves-light btn pink lighten-2", remote: true %>
-				</div>
-  <% end %>
+					<% end %>
+  	<% end %>
 
 	<div id="first-todo" style="display:none;"></div>
   </div>
