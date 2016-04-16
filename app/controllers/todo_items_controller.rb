@@ -64,6 +64,19 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def sort
+    @todo_list = TodoList.find(params[:todo_list_id])
+
+    params[:todo_item].each_with_index do |id, index|
+      @mytodo = @todo_list.todo_items.find(id)
+      @mytodo.position = index + 1
+      @mytodo.save
+    end
+
+   render :text => @mytodo.inspect
+  end
+
+
   private
     def todo_item_params
       params.require(:todo_item).permit(:description, :notes)

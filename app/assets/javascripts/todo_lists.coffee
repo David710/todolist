@@ -6,5 +6,8 @@ $( document ).on "page:change", ->
   #rend la section list-todolist sortable
   $( ".content-todos-total" ).sortable
     axis: 'y'
+    handle: '.handle-list'
     update: ->
-      alert 'updated'
+      #console.log $(this).attr('data-todo-list-update-url')
+      $.post( $(this).attr('data-todo-list-update-url') , $(this).sortable('serialize'),
+      "jsonp" )

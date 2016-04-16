@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127212747) do
+ActiveRecord::Schema.define(version: 20160416155757) do
 
   create_table "todo_items", force: :cascade do |t|
     t.text     "description"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151127212747) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "position"
   end
 
 end

@@ -12,7 +12,7 @@
 			</p>
 	  </div>
 		<div class="divider"></div>
-		<div class="section group-todos" data-update-url="<%= sort_todo_list_url(@todo_list) %>">
+		<div class="section group-todos" data-update-url="<%= sort_todo_list_todo_items_url(@todo_list) %>">
 			<% @todo_list.todo_items.order("position").each do |todo_item| %>
 			<%= content_tag_for(:div, todo_item, class: "todos") do %>
 

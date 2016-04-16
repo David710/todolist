@@ -4,17 +4,18 @@
 	<div id= "create-list">
     <%= link_to 'new todo list', new_todo_list_path, class: "waves-effect waves-light btn pink lighten-2" %>
 	</div>
-	<div class= "content-todos-total">
+	<div class= "content-todos-total" data-todo-list-update-url="<%= sort_todo_lists_url %>">
   	<% @todo_lists.each_with_index  do |todo_list, index| %>
 					<%= content_tag_for(:div, todo_list) do %>
         		<div class="content-todos">
 	          	<div class="bloc-list">
 		            <div class="bloc-title">
-		              <span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
+		              <span class = handle-list><i class="material-icons">reorder</i></span>
+									<span class="todo-title"><%= link_to todo_list.title, todo_list_path(todo_list) %></span>
 		              <p class="todo-desc"><%= todo_list.description.try(:html_safe) %></p>
 		            </div>
 		            <div class="bloc-todos">
-									<div class="section group-todos" id="index_todo_list<%= todo_list.id %>"data-update-url="<%= sort_todo_list_url(todo_list) %>">
+									<div class="section group-todos" id="index_todo_list<%= todo_list.id %>"data-update-url="<%= sort_todo_list_todo_items_url(todo_list) %>">
 
 										<% todo_list.todo_items.order("position").each do |todo_item| %>
 											<%= content_tag_for(:div, todo_item, class: "todos") do %>
@@ -67,6 +68,7 @@
 					<% end %>
   	<% end %>
 
-	<div id="first-todo" style="display:none;"></div>
+		<div id="first-todo" style="display:none;"></div>
   </div>
+
 </div>
