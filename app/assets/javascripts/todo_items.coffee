@@ -19,18 +19,8 @@ $( document ).on "page:change", ->
       ui.helper.addClass('being-sorted')
     stop: ( event, ui ) ->
       ui.item.removeClass('being-sorted')
-
-				update: ->
-						$.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
-
-  #rend la section list-todolist sortable
-  $( ".content-todos-total" ).sortable
-    axis: 'y'
-    handle: '.handle-list'
     update: ->
-      #console.log $(this).attr('data-todo-list-update-url')
-      $.post( $(this).attr('data-todo-list-update-url') , $(this).sortable('serialize'),
-      "jsonp" )
+      $.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
 
 
 		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton

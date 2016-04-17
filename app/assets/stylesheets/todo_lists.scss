@@ -95,3 +95,19 @@ input[type="text"].validate {
 #task-form-edit {
   margin-bottom: 20px;
 }
+
+.sortable-placeholder{
+  display: block;
+  height: 400px;
+  border-color: #fce4ec;
+  border-style: dashed;
+  background-color: white;
+  border-width: 2px;
+  border-radius: 3px;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+.todo_list{
+  margin-right: 50px;
+}
