@@ -23,6 +23,15 @@ $( document ).on "page:change", ->
 				update: ->
 						$.post($(this).data('update-url'), $(this).sortable('serialize'), "jsonp")
 
+  #rend la section list-todolist sortable
+  $( ".content-todos-total" ).sortable
+    axis: 'y'
+    handle: '.handle-list'
+    update: ->
+      #console.log $(this).attr('data-todo-list-update-url')
+      $.post( $(this).attr('data-todo-list-update-url') , $(this).sortable('serialize'),
+      "jsonp" )
+
 
 		#fait apparaitre la div id="task-form" sous le todo pour lequel on a appuyé sur le bouton
 		# create todo
@@ -52,12 +61,19 @@ $( document ).on "page:change", ->
 
   #permet de cocher la check box d'un todoitem
   $( ".todos" ).click (event)->
+    event.preventDefault()
+    console.log event.target
     if $(event.target).hasClass( "filled-in" )
       $target = $(this).find("input[type=checkbox]")
       if $target.prop( "checked") is true
         $target.prop( "checked", false)
+        alert "true"
       else
         $target.prop( "checked", true )
+        alert false
+    console.log $target
+    alert "pause"
+    false
 
   #cache la forme de saisie edit quand on click sur cancel
   $( "div.group-todos" ).click ( event ) ->
