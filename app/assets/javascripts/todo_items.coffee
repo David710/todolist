@@ -81,3 +81,5 @@ $( document ).on "page:change", ->
       $( '#task-form-edit' ).remove()
       $( ".edit_tag > a" ).show()
       clickTodo()
+      
+  clickTodo()

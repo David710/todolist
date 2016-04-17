@@ -16,14 +16,14 @@ $( ".edit_tag > a" ).click ( function ( event ) {
   $(this).hide();
 });
 
- $( ".todos" ).click ( function ( event ) {
-     if ( $( event.target ).hasClass( "filled-in" ) ) {
-       $target = $( this ).find( "input[type=checkbox]" );
-       if ( $target.prop( "checked") == true ) {
-         $target.prop( "checked", false);
-       }
-       else {
-         $target.prop( "checked", true );
-       };
+$( ".todos" ).click ( function ( event ) {
+   if ( $( event.target ).hasClass( "filled-in" ) ) {
+     $target = $( this ).find( "input[type=checkbox]" );
+     if ( $target.prop( "checked") == true ) {
+       $target.prop( "checked", false);
+     }
+     else {
+       $target.prop( "checked", true );
      };
+   };
  });
