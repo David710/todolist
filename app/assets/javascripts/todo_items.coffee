@@ -79,3 +79,4 @@ $( document ).on "page:change", ->
       event.preventDefault()
       $( '#task-form-edit' ).remove()
       $( ".edit_tag > a" ).show()
+      $(document).trigger('change');
