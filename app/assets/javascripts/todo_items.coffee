@@ -62,15 +62,16 @@ $( document ).on "page:change", ->
 
   # permet de re-activer le cochage des checkbox après qu'un nouveau todo
   # ai été ajouté (grace à document change)
-  $( document ).change ->
-    $( ".todos" ).click (event)->
-      event.preventDefault()
-      if $(event.target).hasClass( "filled-in" )
-        $target = $(this).find("input[type=checkbox]")
-        if $target.prop( "checked") is true
-          $target.prop( "checked", false)
-        else
-          $target.prop( "checked", true )
+  clickTodo = () ->
+    $( document ).change ->
+      $( ".todos" ).click (event)->
+        event.preventDefault()
+        if $(event.target).hasClass( "filled-in" )
+          $target = $(this).find("input[type=checkbox]")
+          if $target.prop( "checked") is true
+            $target.prop( "checked", false)
+          else
+            $target.prop( "checked", true )
 
   #cache la forme de saisie edit quand on click sur cancel
   $( "div.group-todos" ).click ( event ) ->
@@ -79,4 +80,4 @@ $( document ).on "page:change", ->
       event.preventDefault()
       $( '#task-form-edit' ).remove()
       $( ".edit_tag > a" ).show()
-      $(document).trigger('change');
+      clickTodo()
