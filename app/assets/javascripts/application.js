@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require materialize-sprockets
+//= require functions
 //= require trix
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-	
-	

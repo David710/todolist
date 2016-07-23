@@ -1,3 +1,6 @@
+//var $oldNewTodo = $(".bloc-todos").find( "label.new-todo" );
+//$oldNewTodo.removeClass("new-todo");
+
 $('#index_todo_list<%= @todo_list.id %>').append( "<%= j (render 'first_todo') %>" );
 $('#todo_item_description').val("");
 
@@ -16,14 +19,17 @@ $( ".edit_tag > a" ).click ( function ( event ) {
   $(this).hide();
 });
 
-$( ".todos" ).click ( function ( event ) {
-   if ( $( event.target ).hasClass( "filled-in" ) ) {
-     $target = $( this ).find( "input[type=checkbox]" );
-     if ( $target.prop( "checked") == true ) {
-       $target.prop( "checked", false);
-     }
-     else {
-       $target.prop( "checked", true );
-     };
-   };
- });
+console.log("create.js");
+clickNewTodo();
+//$( ".todos" ).click ( function ( event ) {
+//    console.log("create.js click event");
+//   if ( $( event.target ).hasClass( "filled-in" ) ) {
+//      $target = $( this ).find( "input[type=checkbox]" );
+//      if ( $target.prop( "checked") == true ) {
+//        $target.prop( "checked", false);
+//      }
+//      else {
+  //      $target.prop( "checked", true );
+//      };
+//    };
+// });

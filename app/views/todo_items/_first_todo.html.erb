@@ -4,7 +4,7 @@
 			 <span class="handle"><i class="material-icons">reorder</i></span>
 			 <%= link_to completed_todo_list_todo_item_path(@todo_list, @todo_item), method: :post, remote: true  do %>
 					<%= check_box_tag(@todo_item.id, @todo_item.done, checked = true, class: "filled-in") %>
-					<%= label_tag(@todo_item.id, "", class: "filled-in") %>
+					<%= label_tag(@todo_item.id, "", class: "filled-in new-todo") %>
 			 <% end %>
 			 <%= label_tag(@todo_item.id.to_s + "-desc", @todo_item.description, class: "label-desc") %>
 
@@ -12,7 +12,7 @@
 			<span class="handle"><i class="material-icons">reorder</i></span>
 			<%= link_to completed_todo_list_todo_item_path(@todo_list, @todo_item), method: :post, remote: true  do %>
 				 <%= check_box_tag(@todo_item.id, @todo_item.done, checked = false, class: "filled-in") %>
-				 <%= label_tag(@todo_item.id, "", class: "filled-in") %>
+				 <%= label_tag(@todo_item.id, "", class: "filled-in new-todo") %>
 			<% end %>
 			<%= label_tag(@todo_item.id.to_s + "-desc", @todo_item.description, class: "label-desc") %>
 		<% end %>

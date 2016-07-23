@@ -49,9 +49,10 @@ $( document ).on "page:change", ->
       $( '#task-form' ).remove()
       $( ".add-todo-button > a" ).show()
 
-  #permet de cocher la check box d'un todoitem
+#  #permet de cocher la check box d'un todoitem
   $( ".todos" ).click (event)->
     event.preventDefault()
+    console.log("todo_item.coffee click event coch todoitem")
     if $(event.target).hasClass( "filled-in" )
       $target = $(this).find("input[type=checkbox]")
       if $target.prop( "checked") is true
@@ -62,16 +63,17 @@ $( document ).on "page:change", ->
 
   # permet de re-activer le cochage des checkbox après qu'un nouveau todo
   # ai été ajouté (grace à document change)
-  clickTodo = () ->
-    $( document ).change ->
-      $( ".todos" ).click (event)->
-        event.preventDefault()
-        if $(event.target).hasClass( "filled-in" )
-          $target = $(this).find("input[type=checkbox]")
-          if $target.prop( "checked") is true
-            $target.prop( "checked", false)
-          else
-            $target.prop( "checked", true )
+#  clickTodo = () ->
+#    $( document ).change ->
+#      $( ".todos" ).click (event)->
+#        console.log "todo_item.coffee clickTodo"
+#        event.preventDefault()
+#        if $(event.target).hasClass( "filled-in" )
+#          $target = $(this).find("input[type=checkbox]")
+#          if $target.prop( "checked") is true
+#            $target.prop( "checked", false)
+#          else
+#            $target.prop( "checked", true )
 
   #cache la forme de saisie edit quand on click sur cancel
   $( "div.group-todos" ).click ( event ) ->
@@ -80,6 +82,6 @@ $( document ).on "page:change", ->
       event.preventDefault()
       $( '#task-form-edit' ).remove()
       $( ".edit_tag > a" ).show()
-      clickTodo()
-      
-  clickTodo()
+      #clickTodo()
+
+  #clickTodo()
